@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Juicy</string>
+    <string name="title">Juicy</string>
+    <string name="amount_to_make">Amount To Make</string>
+    <string name="flavor1">Flavor 1</string>
+    <string name="flavor2">Flavor 2</string>
+    <string name="flavor3">Flavor 3</string>
+    <string name="flavor4">Flavor 4</string>
+    <string name="hint_amount_to_make">Amount in mL</string>
+    <string name="hint_flavor_name">Flavor Name</string>
+    <string name="calculate">Calculate</string>
+    <string name="clear">Clear</string>
+    <string name="instructions">Input your recipe and tap "Calculate."</string>
+    <string name="percent">%</string>
+    <string name="menu_title_recipe">Recipes</string>
+    <string name="menu_subtitle_recipe">Calculate your recipes.</string>
+    <string name="menu_title_resistance">Resistance</string>
+    <string name="menu_subtitle_resistance">Calculate total coil resistance.</string>
+    <string name="menu_title_power">Power</string>
+    <string name="menu_subtitle_power">Calculate amp draw, wattage, etc.</string>
+    <string name="menu_icon_desc">Icon for a menu item</string>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="resistance1">Resistance 1</string>
+    <string name="resistance2">Resistance 2</string>
+    <string name="resistance3">Resistance 3</string>
+    <string name="resistance4">Resistance 4</string>
+    <string name="ohm_symbol">Ω</string>
+    <string name="voltage">Voltage</string>
+    <string name="current">Current</string>
+    <string name="resistance">Resistance</string>
+    <string name="power">Power</string>
+
+</resources>
