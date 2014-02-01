@@ -27,6 +27,7 @@ public class MainActivity extends SherlockFragmentActivity {
 	Fragment fragmentRecipe = new RecipeFragment();
 	Fragment fragmentResistance = new ResistanceFragment();
 	Fragment fragmentPower = new PowerFragment();
+	Fragment fragmentAbout = new AboutFragment();
 	private CharSequence mDrawerTitle;
 	private CharSequence mTitle;
 
@@ -41,16 +42,18 @@ public class MainActivity extends SherlockFragmentActivity {
 		// Generate title
 		title = new String[] { getString(R.string.menu_title_recipe),
 				getString(R.string.menu_title_resistance),
-				getString(R.string.menu_title_power) };
+				getString(R.string.menu_title_power),
+				getString(R.string.menu_title_about) };
 
 		// Generate subtitle
 		subtitle = new String[] { getString(R.string.menu_subtitle_recipe),
 				getString(R.string.menu_subtitle_resistance),
-				getString(R.string.menu_subtitle_power) };
+				getString(R.string.menu_subtitle_power),
+				getString(R.string.menu_subtitle_about) };
 
 		// Generate icon
 		icon = new int[] { R.drawable.menu_recipe, R.drawable.menu_resistance,
-				R.drawable.menu_power };
+				R.drawable.menu_power, R.drawable.menu_about };
 
 		// Locate DrawerLayout in drawer_main.xml
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -142,6 +145,9 @@ public class MainActivity extends SherlockFragmentActivity {
 			break;
 		case 2:
 			ft.replace(R.id.content_frame, fragmentPower);
+			break;
+		case 3:
+			ft.replace(R.id.content_frame, fragmentAbout);
 			break;
 		}
 		ft.commit();

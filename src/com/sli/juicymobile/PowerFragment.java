@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+//import com.sli.juicymobile.data.BatteryData;
+
 public class PowerFragment extends SherlockFragment {
 
 	private EditText etVoltage, etCurrent, etResistance, etPower;
