@@ -40,20 +40,21 @@ public class MainActivity extends SherlockFragmentActivity {
 		mTitle = mDrawerTitle = getTitle();
 
 		// Generate title
-		title = new String[] { getString(R.string.menu_title_recipe),
-				getString(R.string.menu_title_resistance),
-				getString(R.string.menu_title_power),
-				getString(R.string.menu_title_about) };
+		title = new String[] { getString(R.string.drawer_title_recipe),
+				getString(R.string.drawer_title_resistance),
+				getString(R.string.drawer_title_power),
+				getString(R.string.drawer_title_about) };
 
 		// Generate subtitle
-		subtitle = new String[] { getString(R.string.menu_subtitle_recipe),
-				getString(R.string.menu_subtitle_resistance),
-				getString(R.string.menu_subtitle_power),
-				getString(R.string.menu_subtitle_about) };
+		subtitle = new String[] { getString(R.string.drawer_subtitle_recipe),
+				getString(R.string.drawer_subtitle_resistance),
+				getString(R.string.drawer_subtitle_power),
+				getString(R.string.drawer_subtitle_about) };
 
 		// Generate icon
-		icon = new int[] { R.drawable.menu_recipe, R.drawable.menu_resistance,
-				R.drawable.menu_power, R.drawable.menu_about };
+		icon = new int[] { R.drawable.drawer_recipe,
+				R.drawable.drawer_resistance, R.drawable.drawer_power,
+				R.drawable.drawer_about };
 
 		// Locate DrawerLayout in drawer_main.xml
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);

@@ -43,5 +43,55 @@
         android:paddingTop="8dp"
         android:text="@string/about_github_url"
         android:autoLink="web" />
+    
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textView4"
+        android:paddingTop="8dp"
+        android:text="@string/about_rjuicyapp_url"
+        android:autoLink="web" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView4"
+        android:layout_below="@+id/textView5"
+        android:layout_marginTop="32dp"
+        android:text="@string/about_created_using"
+        android:autoLink="web" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView4"
+        android:layout_below="@+id/textView6"
+        android:paddingTop="8dp"
+        android:text="@string/about_abs_url"
+        android:autoLink="web" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView4"
+        android:layout_below="@+id/textView7"
+        android:paddingTop="8dp"
+        android:text="@string/about_file_chooser_url"
+        android:autoLink="web" />
+    
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView4"
+        android:layout_below="@+id/textView8"
+        android:paddingTop="8dp"
+        android:text="@string/about_ormlite_url"
+        android:autoLink="web" />
 
 </RelativeLayout>

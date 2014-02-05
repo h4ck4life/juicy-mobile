@@ -1,6 +1,12 @@
 package com.sli.juicymobile;
 
 import com.actionbarsherlock.app.SherlockFragment;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuInflater;
+import com.actionbarsherlock.view.MenuItem;
+
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -68,8 +74,45 @@ public class RecipeFragment extends SherlockFragment {
 
 		});
 
+		setHasOptionsMenu(true);
+
 		return v;
 
+	}
+
+	@Override
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+		super.onCreateOptionsMenu(menu, inflater);
+		inflater.inflate(R.menu.main, menu);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case R.id.menu_save:
+			// save item to SQLite database
+			saveRecipe();
+			break;
+		case R.id.menu_open:
+			// open SQLite database and list recipes
+			openRecipe();
+			break;
+		case R.id.menu_export:
+			// export to json
+			exportRecipe();
+			break;
+		case R.id.menu_import:
+			// import from json
+			importRecipe();
+			break;
+		case R.id.menu_settings:
+			// open settings
+			Toast.makeText(getSherlockActivity(), "lol settings",
+					Toast.LENGTH_SHORT).show();
+			break;
+		}
+
+		return super.onOptionsItemSelected(item);
 	}
 
 	private String calculateRecipe() {
@@ -79,8 +122,8 @@ public class RecipeFragment extends SherlockFragment {
 
 		if (etAmountToMake.getText().toString().equals("")) {
 			// ask for amount to make
-			Toast.makeText(getActivity(), "You must specify an amount.",
-					Toast.LENGTH_SHORT).show();
+			Toast.makeText(getSherlockActivity(),
+					"You must specify an amount.", Toast.LENGTH_SHORT).show();
 		} else {
 			// run calculation
 			amt = Float.parseFloat(etAmountToMake.getText().toString());
@@ -161,6 +204,75 @@ public class RecipeFragment extends SherlockFragment {
 		}
 
 		return display;
+	}
+
+	/*
+	 * Menu callback... things.
+	 */
+	private void saveRecipe() {
+		final EditText n = new EditText(getSherlockActivity());
+
+		new AlertDialog.Builder(getSherlockActivity())
+				.setTitle("Save")
+				.setMessage("Input name for this recipe.")
+				.setView(n)
+				.setPositiveButton("Save",
+						new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface dialog,
+									int which) {
+								String name = n.getText().toString();
+								// insert or update, just Toast it for now
+								Toast.makeText(getSherlockActivity(),
+										"Saved as " + name, Toast.LENGTH_SHORT)
+										.show();
+							}
+						})
+				.setNegativeButton("Cancel",
+						new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface dialog,
+									int which) {
+								// nothing, lol!
+							}
+						}).show();
+	}
+
+	private void openRecipe() {
+
+	}
+
+	private void exportRecipe() {
+		final EditText n = new EditText(getSherlockActivity());
+
+		new AlertDialog.Builder(getSherlockActivity())
+				.setTitle("Export")
+				.setMessage("Input name for this recipe.")
+				.setView(n)
+				.setPositiveButton("Export",
+						new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface dialog,
+									int which) {
+								String name = n.getText().toString();
+								// save to filename
+								Toast.makeText(getSherlockActivity(),
+										"Exported as " + name + ".json",
+										Toast.LENGTH_SHORT).show();
+							}
+						})
+				.setNegativeButton("Cancel",
+						new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface dialog,
+									int which) {
+								// nothing, lol!
+							}
+						}).show();
+	}
+
+	private void importRecipe() {
+
 	}
 
 }
