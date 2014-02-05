@@ -65,5 +65,20 @@
     <string name="about_abs_url">http://actionbarsherlock.com/</string>
     <string name="about_file_chooser_url">https://code.google.com/p/android-file-chooser/</string>
     <string name="about_ormlite_url">http://ormlite.com/</string>
+    
+    <!-- Settings stuff -->
+    <string name="settings_save_location">Save Location</string>
+    <string name="settings_save_location_title">Select save location</string>
+    <string name="settings_save_location_default">internal</string>
+    
+    <string-array name="settings_save_location_entries">
+        <item>Internal SD</item>
+        <item>External SD</item>
+    </string-array>
+    
+    <string-array name="settings_save_location_values">
+        <item>internal</item>
+        <item>external</item>
+    </string-array>
 
 </resources>

@@ -7,6 +7,7 @@ import com.actionbarsherlock.view.MenuItem;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,8 @@ import android.widget.Toast;
 
 public class RecipeFragment extends SherlockFragment {
 
+	private static final int SHOW_PREFERENCES = 16;
+	
 	private EditText etAmountToMake;
 	private EditText etFlavor1Name, etFlavor2Name, etFlavor3Name,
 			etFlavor4Name;
@@ -107,8 +110,8 @@ public class RecipeFragment extends SherlockFragment {
 			break;
 		case R.id.menu_settings:
 			// open settings
-			Toast.makeText(getSherlockActivity(), "lol settings",
-					Toast.LENGTH_SHORT).show();
+			Intent i = new Intent(getSherlockActivity(), SettingsActivity.class);
+			startActivityForResult(i, SHOW_PREFERENCES);
 			break;
 		}
 

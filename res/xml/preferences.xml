@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <ListPreference
+        android:key="pref_saveLocation"
+        android:title="@string/settings_save_location"
+        android:dialogTitle="@string/settings_save_location_title"
+        android:entries="@array/settings_save_location_entries"
+        android:entryValues="@array/settings_save_location_values"
+        android:defaultValue="@string/settings_save_location_default" />
+
+</PreferenceScreen>
