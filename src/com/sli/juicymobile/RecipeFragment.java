@@ -1,5 +1,19 @@
 package com.sli.juicymobile;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import br.com.thinkti.android.filechooser.FileChooser;
+
 import com.actionbarsherlock.app.SherlockFragment;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
@@ -9,6 +23,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,8 +34,9 @@ import android.widget.Toast;
 
 public class RecipeFragment extends SherlockFragment {
 
-	private static final int SHOW_PREFERENCES = 16;
-	
+	// private static final int SHOW_PREFERENCES = 1;
+	private static final int FILE_CHOOSER = 2;
+
 	private EditText etAmountToMake;
 	private EditText etFlavor1Name, etFlavor2Name, etFlavor3Name,
 			etFlavor4Name;
@@ -34,7 +50,6 @@ public class RecipeFragment extends SherlockFragment {
 			Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.recipe_fragment, container, false);
 
-		// Main activity - should be moved now that fragments are used
 		etAmountToMake = (EditText) v.findViewById(R.id.etAmountToMake);
 		etFlavor1Name = (EditText) v.findViewById(R.id.etFlavor1Name);
 		etFlavor2Name = (EditText) v.findViewById(R.id.etFlavor2Name);
@@ -92,14 +107,14 @@ public class RecipeFragment extends SherlockFragment {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-		case R.id.menu_save:
-			// save item to SQLite database
-			saveRecipe();
-			break;
-		case R.id.menu_open:
-			// open SQLite database and list recipes
-			openRecipe();
-			break;
+		// case R.id.menu_save:
+		// save item to SQLite database
+		// saveRecipe();
+		// break;
+		// case R.id.menu_open:
+		// open SQLite database and list recipes
+		// openRecipe();
+		// break;
 		case R.id.menu_export:
 			// export to json
 			exportRecipe();
@@ -108,11 +123,11 @@ public class RecipeFragment extends SherlockFragment {
 			// import from json
 			importRecipe();
 			break;
-		case R.id.menu_settings:
-			// open settings
-			Intent i = new Intent(getSherlockActivity(), SettingsActivity.class);
-			startActivityForResult(i, SHOW_PREFERENCES);
-			break;
+		// case R.id.menu_settings:
+		// open settings
+		// Intent i = new Intent(getSherlockActivity(), SettingsActivity.class);
+		// startActivityForResult(i, SHOW_PREFERENCES);
+		// break;
 		}
 
 		return super.onOptionsItemSelected(item);
@@ -209,6 +224,34 @@ public class RecipeFragment extends SherlockFragment {
 		return display;
 	}
 
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (requestCode == FILE_CHOOSER && resultCode == -1) {
+			// Get filename, open, read, and insert into the form
+			String fileSelected = data.getStringExtra("fileSelected");
+			File path = new File(fileSelected);
+			StringBuilder sb = new StringBuilder();
+
+			try {
+				BufferedReader br = new BufferedReader(new FileReader(path));
+				String line;
+
+				try {
+					while ((line = br.readLine()) != null) {
+						sb.append(line);
+					}
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
+
+			setRecipeFromJSON(sb.toString());
+		}
+	}
+
 	/*
 	 * Menu callback... things.
 	 */
@@ -242,7 +285,7 @@ public class RecipeFragment extends SherlockFragment {
 	}
 
 	private void openRecipe() {
-
+		
 	}
 
 	private void exportRecipe() {
@@ -257,11 +300,50 @@ public class RecipeFragment extends SherlockFragment {
 							@Override
 							public void onClick(DialogInterface dialog,
 									int which) {
+								/*
+								 * Build Juicy-compatible JSON file and export
+								 * to configured save location.
+								 */
 								String name = n.getText().toString();
-								// save to filename
-								Toast.makeText(getSherlockActivity(),
-										"Exported as " + name + ".json",
-										Toast.LENGTH_SHORT).show();
+
+								JSONObject recipe = getRecipeAsJSON();
+
+								// Write JSON file
+								String state = Environment
+										.getExternalStorageState();
+								if (Environment.MEDIA_MOUNTED.equals(state)) {
+									String outDir = Environment
+											.getExternalStorageDirectory()
+											.getAbsolutePath().toString()
+											+ "/Juicy/";
+									File outPath = new File(outDir);
+									outPath.mkdirs();
+									File outFile = new File(outPath, name
+											+ ".json");
+									try {
+										FileOutputStream fos = new FileOutputStream(
+												outFile);
+										try {
+											try {
+												fos.write(recipe.toString(2)
+														.getBytes());
+											} catch (JSONException e) {
+												e.printStackTrace();
+											}
+											fos.close();
+										} catch (IOException e) {
+											e.printStackTrace();
+										}
+									} catch (FileNotFoundException e) {
+										e.printStackTrace();
+									}
+
+									Toast.makeText(
+											getSherlockActivity(),
+											outFile.getAbsolutePath()
+													.toString(),
+											Toast.LENGTH_SHORT).show();
+								}
 							}
 						})
 				.setNegativeButton("Cancel",
@@ -275,7 +357,136 @@ public class RecipeFragment extends SherlockFragment {
 	}
 
 	private void importRecipe() {
+		Intent i = new Intent(getSherlockActivity(), FileChooser.class);
+		ArrayList<String> extensions = new ArrayList<String>();
+		extensions.add(".json");
+		i.putStringArrayListExtra("filterFileExtension", extensions);
+		startActivityForResult(i, FILE_CHOOSER);
+	}
 
+	/*
+	 * Generate a JSONObject from the recipe form
+	 */
+	private JSONObject getRecipeAsJSON() {
+		JSONObject recipe = new JSONObject();
+
+		try {
+			// Recipe base solution
+			recipe.put("nicotine_base", 0.0);
+			recipe.put("nicotine_target", 0.0);
+			recipe.put("amount",
+					Float.parseFloat(etAmountToMake.getText().toString()));
+			recipe.put("cut", 0.0);
+			recipe.put("target_pg", 0.0);
+			recipe.put("target_vg", 0.0);
+			recipe.put("base_pg_percent", 0.0);
+			recipe.put("base_vg_percent", 0.0);
+			recipe.put("drops_per_ml", 0.0);
+			recipe.put("Notes", "");
+			recipe.put("mlNotes", "");
+
+			JSONArray flavors = new JSONArray();
+
+			// Flavor 1
+			if (!etFlavor1Name.getText().toString().equals("")
+					|| !etFlavor1Name.getText().toString().equals("")) {
+				JSONObject f = new JSONObject();
+				f.put("name", etFlavor1Name.getText().toString());
+				f.put("percent",
+						Float.parseFloat(etFlavor1Percent.getText().toString()));
+				f.put("pg_percent", 100.0);
+				f.put("vg_percent", 0.0);
+				f.put("flavorless", false);
+				flavors.put(f);
+			}
+
+			// Flavor 2
+			if (!etFlavor2Name.getText().toString().equals("")
+					|| !etFlavor2Name.getText().toString().equals("")) {
+				JSONObject f = new JSONObject();
+				f.put("name", etFlavor2Name.getText().toString());
+				f.put("percent",
+						Float.parseFloat(etFlavor2Percent.getText().toString()));
+				f.put("pg_percent", 100.0);
+				f.put("vg_percent", 0.0);
+				f.put("flavorless", false);
+				flavors.put(f);
+			}
+
+			// Flavor 3
+			if (!etFlavor3Name.getText().toString().equals("")
+					|| !etFlavor3Name.getText().toString().equals("")) {
+				JSONObject f = new JSONObject();
+				f.put("name", etFlavor3Name.getText().toString());
+				f.put("percent",
+						Float.parseFloat(etFlavor3Percent.getText().toString()));
+				f.put("pg_percent", 100.0);
+				f.put("vg_percent", 0.0);
+				f.put("flavorless", false);
+				flavors.put(f);
+			}
+
+			// Flavor 4
+			if (!etFlavor4Name.getText().toString().equals("")
+					|| !etFlavor4Name.getText().toString().equals("")) {
+				JSONObject f = new JSONObject();
+				f.put("name", etFlavor4Name.getText().toString());
+				f.put("percent",
+						Float.parseFloat(etFlavor4Percent.getText().toString()));
+				f.put("pg_percent", 100.0);
+				f.put("vg_percent", 0.0);
+				f.put("flavorless", false);
+				flavors.put(f);
+			}
+
+			recipe.put("flavors", flavors);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+
+		return recipe;
+	}
+
+	private void setRecipeFromJSON(String rawJSON) {
+		try {
+			JSONObject json = new JSONObject(rawJSON);
+			JSONArray flavors = new JSONArray();
+
+			etAmountToMake.setText(json.getString("amount"));
+			flavors = json.getJSONArray("flavors");
+
+			JSONObject f = null;
+
+			// Flavor 1
+			if (flavors.length() > 0) {
+				f = flavors.getJSONObject(0);
+				etFlavor1Name.setText(f.getString("name"));
+				etFlavor1Percent.setText(f.getString("percent"));
+			}
+
+			// Flavor 2
+			if (flavors.length() > 1) {
+				f = flavors.getJSONObject(1);
+				etFlavor2Name.setText(f.getString("name"));
+				etFlavor2Percent.setText(f.getString("percent"));
+			}
+
+			// Flavor 3
+			if (flavors.length() > 2) {
+				f = flavors.getJSONObject(2);
+				etFlavor3Name.setText(f.getString("name"));
+				etFlavor3Percent.setText(f.getString("percent"));
+			}
+
+			// Flavor 4
+			if (flavors.length() > 3) {
+				f = flavors.getJSONObject(3);
+				etFlavor4Name.setText(f.getString("name"));
+				etFlavor4Percent.setText(f.getString("percent"));
+			}
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
