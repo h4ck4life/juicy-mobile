@@ -21,6 +21,7 @@ public class ResistanceFragment extends SherlockFragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+		
 		View v = inflater.inflate(R.layout.resistance_fragment, container,
 				false);
 

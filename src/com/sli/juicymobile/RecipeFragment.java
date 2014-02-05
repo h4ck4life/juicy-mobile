@@ -34,7 +34,7 @@ import android.widget.Toast;
 
 public class RecipeFragment extends SherlockFragment {
 
-	// private static final int SHOW_PREFERENCES = 1;
+	private static final int SHOW_PREFERENCES = 1;
 	private static final int FILE_CHOOSER = 2;
 
 	private EditText etAmountToMake;
@@ -49,6 +49,7 @@ public class RecipeFragment extends SherlockFragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+
 		View v = inflater.inflate(R.layout.recipe_fragment, container, false);
 
 		etAmountToMake = (EditText) v.findViewById(R.id.etAmountToMake);
@@ -114,7 +115,7 @@ public class RecipeFragment extends SherlockFragment {
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 		super.onCreateOptionsMenu(menu, inflater);
-		inflater.inflate(R.menu.main, menu);
+		inflater.inflate(R.menu.recipe, menu);
 	}
 
 	@Override

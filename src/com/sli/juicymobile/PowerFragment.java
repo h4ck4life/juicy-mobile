@@ -24,6 +24,7 @@ public class PowerFragment extends SherlockFragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+		
 		View v = inflater.inflate(R.layout.power_fragment, container, false);
 
 		etVoltage = (EditText) v.findViewById(R.id.etVoltage);

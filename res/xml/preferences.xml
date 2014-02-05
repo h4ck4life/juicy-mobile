@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
 
+    <!--
     <PreferenceCategory
         android:key="settings_storage"
         android:title="@string/settings_storage_title" >
@@ -11,6 +12,17 @@
             android:entryValues="@array/settings_save_location_values"
             android:key="pref_saveLocation"
             android:title="@string/settings_save_location" />
+    </PreferenceCategory>
+    -->
+
+    <PreferenceCategory
+        android:key="settings_look"
+        android:title="@string/settings_look" >
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="pref_nightMode"
+            android:summary="@string/settings_night_summary"
+            android:title="@string/settings_night_title" />
     </PreferenceCategory>
 
 </PreferenceScreen>

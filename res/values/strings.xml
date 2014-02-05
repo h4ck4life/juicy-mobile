@@ -75,6 +75,10 @@
     <string name="settings_save_location_title">Select save location</string>
     <string name="settings_save_location_default">internal</string>
     
+    <string name="settings_look">Look &amp; Feel</string>
+    <string name="settings_night_title">Night Mode</string>
+    <string name="settings_night_summary">For you night owls.</string>
+    
     <string-array name="settings_save_location_entries">
         <item>Internal SD</item>
         <item>External SD</item>
