@@ -15,6 +15,9 @@
     <string name="flavor2">Flavor 2</string>
     <string name="flavor3">Flavor 3</string>
     <string name="flavor4">Flavor 4</string>
+    <string name="flavor5">Flavor 5</string>
+    <string name="flavor6">Flavor 6</string>
+    <string name="flavor7">Flavor 7</string>
     <string name="hint_amount_to_make">Amount in mL</string>
     <string name="hint_flavor_name">Flavor Name</string>
     <string name="instructions">Input your recipe and tap "Calculate."</string>

@@ -10,7 +10,8 @@
     <ScrollView
         android:id="@+id/scrollView1"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bCalculate" >
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -170,13 +171,112 @@
                 android:hint="@string/percent"
                 android:inputType="numberDecimal" />
             <!-- End Flavor 4 -->
+            
+            <!-- Flavor 5 -->
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/etAmountToMake"
+                android:layout_below="@+id/etFlavor4Percent"
+                android:layout_marginTop="8dp"
+                android:text="@string/flavor5" />
+
+            <EditText
+                android:id="@+id/etFlavor5Name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/textView6"
+                android:ems="10"
+                android:hint="@string/hint_flavor_name" />
+
+            <EditText
+                android:id="@+id/etFlavor5Percent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/etFlavor5Name"
+                android:layout_alignBottom="@+id/etFlavor5Name"
+                android:layout_alignParentRight="true"
+                android:layout_toRightOf="@+id/etFlavor5Name"
+                android:ems="10"
+                android:hint="@string/percent"
+                android:inputType="numberDecimal" />
+            <!-- End Flavor 5 -->
+            
+            <!-- Flavor 6 -->
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/etAmountToMake"
+                android:layout_below="@+id/etFlavor5Percent"
+                android:layout_marginTop="8dp"
+                android:text="@string/flavor6" />
+
+            <EditText
+                android:id="@+id/etFlavor6Name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/textView7"
+                android:ems="10"
+                android:hint="@string/hint_flavor_name" />
+
+            <EditText
+                android:id="@+id/etFlavor6Percent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/etFlavor6Name"
+                android:layout_alignBottom="@+id/etFlavor6Name"
+                android:layout_alignParentRight="true"
+                android:layout_toRightOf="@+id/etFlavor6Name"
+                android:ems="10"
+                android:hint="@string/percent"
+                android:inputType="numberDecimal" />
+            <!-- End Flavor 6 -->
+            
+            <!-- Flavor 7 -->
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/etAmountToMake"
+                android:layout_below="@+id/etFlavor6Percent"
+                android:layout_marginTop="8dp"
+                android:text="@string/flavor7" />
+
+            <EditText
+                android:id="@+id/etFlavor7Name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/textView8"
+                android:ems="10"
+                android:hint="@string/hint_flavor_name" />
+
+            <EditText
+                android:id="@+id/etFlavor7Percent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/etFlavor7Name"
+                android:layout_alignBottom="@+id/etFlavor7Name"
+                android:layout_alignParentRight="true"
+                android:layout_toRightOf="@+id/etFlavor7Name"
+                android:ems="10"
+                android:hint="@string/percent"
+                android:inputType="numberDecimal" />
+            <!-- End Flavor 4 -->
 
             <WebView
                 android:id="@+id/wvRecipe"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_alignParentRight="true"
-                android:layout_below="@+id/etFlavor4Name"
+                android:layout_below="@+id/etFlavor7Name"
                 android:layout_marginTop="18dp" />
         </RelativeLayout>
     </ScrollView>

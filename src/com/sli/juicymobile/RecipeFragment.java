@@ -39,9 +39,10 @@ public class RecipeFragment extends SherlockFragment {
 
 	private EditText etAmountToMake;
 	private EditText etFlavor1Name, etFlavor2Name, etFlavor3Name,
-			etFlavor4Name;
+			etFlavor4Name, etFlavor5Name, etFlavor6Name, etFlavor7Name;
 	private EditText etFlavor1Percent, etFlavor2Percent, etFlavor3Percent,
-			etFlavor4Percent;
+			etFlavor4Percent, etFlavor5Percent, etFlavor6Percent,
+			etFlavor7Percent;
 	private WebView wvRecipe;
 	private Button bCalculate, bClear;
 
@@ -55,10 +56,16 @@ public class RecipeFragment extends SherlockFragment {
 		etFlavor2Name = (EditText) v.findViewById(R.id.etFlavor2Name);
 		etFlavor3Name = (EditText) v.findViewById(R.id.etFlavor3Name);
 		etFlavor4Name = (EditText) v.findViewById(R.id.etFlavor4Name);
+		etFlavor5Name = (EditText) v.findViewById(R.id.etFlavor5Name);
+		etFlavor6Name = (EditText) v.findViewById(R.id.etFlavor6Name);
+		etFlavor7Name = (EditText) v.findViewById(R.id.etFlavor7Name);
 		etFlavor1Percent = (EditText) v.findViewById(R.id.etFlavor1Percent);
 		etFlavor2Percent = (EditText) v.findViewById(R.id.etFlavor2Percent);
 		etFlavor3Percent = (EditText) v.findViewById(R.id.etFlavor3Percent);
 		etFlavor4Percent = (EditText) v.findViewById(R.id.etFlavor4Percent);
+		etFlavor5Percent = (EditText) v.findViewById(R.id.etFlavor5Percent);
+		etFlavor6Percent = (EditText) v.findViewById(R.id.etFlavor6Percent);
+		etFlavor7Percent = (EditText) v.findViewById(R.id.etFlavor7Percent);
 
 		wvRecipe = (WebView) v.findViewById(R.id.wvRecipe);
 		wvRecipe.setBackgroundColor(0x00000000);
@@ -83,10 +90,16 @@ public class RecipeFragment extends SherlockFragment {
 				etFlavor2Name.setText("");
 				etFlavor3Name.setText("");
 				etFlavor4Name.setText("");
+				etFlavor5Name.setText("");
+				etFlavor6Name.setText("");
+				etFlavor7Name.setText("");
 				etFlavor1Percent.setText("");
 				etFlavor2Percent.setText("");
 				etFlavor3Percent.setText("");
 				etFlavor4Percent.setText("");
+				etFlavor5Percent.setText("");
+				etFlavor6Percent.setText("");
+				etFlavor7Percent.setText("");
 				wvRecipe.loadData("", "text/plain", "utf-8");
 			}
 
@@ -134,8 +147,8 @@ public class RecipeFragment extends SherlockFragment {
 	}
 
 	private String calculateRecipe() {
-		float amt, finalAmt, f1per = 0f, f2per = 0f, f3per = 0f, f4per = 0f;
-		float f1amt = 0f, f2amt = 0f, f3amt = 0f, f4amt = 0f;
+		float amt, finalAmt, f1per = 0f, f2per = 0f, f3per = 0f, f4per = 0f, f5per = 0f, f6per = 0f, f7per = 0f;
+		float f1amt = 0f, f2amt = 0f, f3amt = 0f, f4amt = 0f, f5amt = 0f, f6amt = 0f, f7amt = 0f;
 		String display = "";
 
 		if (etAmountToMake.getText().toString().equals("")) {
@@ -166,7 +179,23 @@ public class RecipeFragment extends SherlockFragment {
 				f4amt = amt * (f4per / 100);
 			}
 
-			finalAmt = amt - (f1amt + f2amt + f3amt + f4amt);
+			if (!etFlavor5Percent.getText().toString().equals("")) {
+				f5per = Float.parseFloat(etFlavor5Percent.getText().toString());
+				f5amt = amt * (f5per / 100);
+			}
+
+			if (!etFlavor6Percent.getText().toString().equals("")) {
+				f6per = Float.parseFloat(etFlavor6Percent.getText().toString());
+				f6amt = amt * (f6per / 100);
+			}
+
+			if (!etFlavor7Percent.getText().toString().equals("")) {
+				f7per = Float.parseFloat(etFlavor7Percent.getText().toString());
+				f7amt = amt * (f7per / 100);
+			}
+
+			finalAmt = amt
+					- (f1amt + f2amt + f3amt + f4amt + f5amt + f6amt + f7amt);
 
 			display = "<html><body>";
 			display += "<style>body{color:white}table{border-collapse:collapse}td{text-align:center}</style>";
@@ -215,6 +244,39 @@ public class RecipeFragment extends SherlockFragment {
 					display += "Flavor 4";
 				}
 				display += "</td><td>" + String.format("%.4f", f4amt)
+						+ "mL</td></tr>";
+			}
+
+			if (f5per > 0f) {
+				display += "<tr><td>";
+				if (!etFlavor5Name.getText().toString().equals("")) {
+					display += etFlavor5Name.getText().toString();
+				} else {
+					display += "Flavor 5";
+				}
+				display += "</td><td>" + String.format("%.4f", f5amt)
+						+ "mL</td></tr>";
+			}
+
+			if (f6per > 0f) {
+				display += "<tr><td>";
+				if (!etFlavor6Name.getText().toString().equals("")) {
+					display += etFlavor6Name.getText().toString();
+				} else {
+					display += "Flavor 6";
+				}
+				display += "</td><td>" + String.format("%.4f", f6amt)
+						+ "mL</td></tr>";
+			}
+
+			if (f7per > 0f) {
+				display += "<tr><td>";
+				if (!etFlavor7Name.getText().toString().equals("")) {
+					display += etFlavor7Name.getText().toString();
+				} else {
+					display += "Flavor 7";
+				}
+				display += "</td><td>" + String.format("%.4f", f7amt)
 						+ "mL</td></tr>";
 			}
 
@@ -285,7 +347,7 @@ public class RecipeFragment extends SherlockFragment {
 	}
 
 	private void openRecipe() {
-		
+
 	}
 
 	private void exportRecipe() {
@@ -439,6 +501,45 @@ public class RecipeFragment extends SherlockFragment {
 				flavors.put(f);
 			}
 
+			// Flavor 5
+			if (!etFlavor5Name.getText().toString().equals("")
+					|| !etFlavor5Name.getText().toString().equals("")) {
+				JSONObject f = new JSONObject();
+				f.put("name", etFlavor5Name.getText().toString());
+				f.put("percent",
+						Float.parseFloat(etFlavor5Percent.getText().toString()));
+				f.put("pg_percent", 100.0);
+				f.put("vg_percent", 0.0);
+				f.put("flavorless", false);
+				flavors.put(f);
+			}
+
+			// Flavor 6
+			if (!etFlavor6Name.getText().toString().equals("")
+					|| !etFlavor6Name.getText().toString().equals("")) {
+				JSONObject f = new JSONObject();
+				f.put("name", etFlavor6Name.getText().toString());
+				f.put("percent",
+						Float.parseFloat(etFlavor6Percent.getText().toString()));
+				f.put("pg_percent", 100.0);
+				f.put("vg_percent", 0.0);
+				f.put("flavorless", false);
+				flavors.put(f);
+			}
+
+			// Flavor 7
+			if (!etFlavor7Name.getText().toString().equals("")
+					|| !etFlavor7Name.getText().toString().equals("")) {
+				JSONObject f = new JSONObject();
+				f.put("name", etFlavor7Name.getText().toString());
+				f.put("percent",
+						Float.parseFloat(etFlavor7Percent.getText().toString()));
+				f.put("pg_percent", 100.0);
+				f.put("vg_percent", 0.0);
+				f.put("flavorless", false);
+				flavors.put(f);
+			}
+
 			recipe.put("flavors", flavors);
 		} catch (JSONException e) {
 			e.printStackTrace();
@@ -483,6 +584,27 @@ public class RecipeFragment extends SherlockFragment {
 				f = flavors.getJSONObject(3);
 				etFlavor4Name.setText(f.getString("name"));
 				etFlavor4Percent.setText(f.getString("percent"));
+			}
+
+			// Flavor 5
+			if (flavors.length() > 4) {
+				f = flavors.getJSONObject(4);
+				etFlavor5Name.setText(f.getString("name"));
+				etFlavor5Percent.setText(f.getString("percent"));
+			}
+
+			// Flavor 6
+			if (flavors.length() > 5) {
+				f = flavors.getJSONObject(5);
+				etFlavor6Name.setText(f.getString("name"));
+				etFlavor6Percent.setText(f.getString("percent"));
+			}
+
+			// Flavor 7
+			if (flavors.length() > 6) {
+				f = flavors.getJSONObject(6);
+				etFlavor7Name.setText(f.getString("name"));
+				etFlavor7Percent.setText(f.getString("percent"));
 			}
 		} catch (JSONException e) {
 			e.printStackTrace();
