@@ -3,7 +3,7 @@
 	
     <!-- Misc app strings -->
     <string name="app_name">Juicy</string>
-    <string name="app_version">0.1.1</string>
+    <string name="app_version">0.1.1a</string>
     <string name="title">Juicy</string>
     <string name="calculate">Calculate</string>
     <string name="clear">Clear</string>
@@ -39,8 +39,6 @@
     <!-- Menu stuff -->
     <string name="menu_save">Save</string>
     <string name="menu_open">Open</string>
-    <string name="menu_export">Export</string>
-    <string name="menu_import">Import</string>
     <string name="menu_settings">Settings</string>
     
     <!-- Drawer icon descriptions -->
@@ -67,26 +65,14 @@
     <string name="about_rjuicyapp_url">http://www.reddit.com/r/juicyapp</string>
     <string name="about_abs_url">http://actionbarsherlock.com/</string>
     <string name="about_file_chooser_url">https://code.google.com/p/android-file-chooser/</string>
-    <string name="about_ormlite_url">http://ormlite.com/</string>
     
     <!-- Settings stuff -->
-    <string name="settings_storage_title">Storage</string>
-    <string name="settings_save_location">Save Location</string>
-    <string name="settings_save_location_title">Select save location</string>
-    <string name="settings_save_location_default">internal</string>
+    <string name="settings_category_storage_title">Storage</string>
+    <string name="settings_save_location_title">Save Location</string>
+    <string name="settings_save_location_summary">Select recipe save location</string>
     
-    <string name="settings_look">Look &amp; Feel</string>
+    <string name="settings_category_look_title">Look &amp; Feel</string>
     <string name="settings_night_title">Night Mode</string>
     <string name="settings_night_summary">For you night owls.</string>
-    
-    <string-array name="settings_save_location_entries">
-        <item>Internal SD</item>
-        <item>External SD</item>
-    </string-array>
-    
-    <string-array name="settings_save_location_values">
-        <item>internal</item>
-        <item>external</item>
-    </string-array>
 
 </resources>

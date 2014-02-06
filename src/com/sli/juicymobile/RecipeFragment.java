@@ -121,25 +121,18 @@ public class RecipeFragment extends SherlockFragment {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-		// case R.id.menu_save:
-		// save item to SQLite database
-		// saveRecipe();
-		// break;
-		// case R.id.menu_open:
-		// open SQLite database and list recipes
-		// openRecipe();
-		// break;
-		case R.id.menu_export:
+		case R.id.menu_save:
 			// export to json
-			exportRecipe();
+			saveRecipe();
 			break;
-		case R.id.menu_import:
+		case R.id.menu_open:
 			// import from json
-			importRecipe();
+			openRecipe();
 			break;
 		// case R.id.menu_settings:
 		// open settings
-		// Intent i = new Intent(getSherlockActivity(), SettingsActivity.class);
+		// Intent i = new Intent(getSherlockActivity(),
+		// RecipeSettingsActivity.class);
 		// startActivityForResult(i, SHOW_PREFERENCES);
 		// break;
 		}
@@ -330,39 +323,6 @@ public class RecipeFragment extends SherlockFragment {
 							@Override
 							public void onClick(DialogInterface dialog,
 									int which) {
-								String name = n.getText().toString();
-								// insert or update, just Toast it for now
-								Toast.makeText(getSherlockActivity(),
-										"Saved as " + name, Toast.LENGTH_SHORT)
-										.show();
-							}
-						})
-				.setNegativeButton("Cancel",
-						new DialogInterface.OnClickListener() {
-							@Override
-							public void onClick(DialogInterface dialog,
-									int which) {
-								// nothing, lol!
-							}
-						}).show();
-	}
-
-	private void openRecipe() {
-
-	}
-
-	private void exportRecipe() {
-		final EditText n = new EditText(getSherlockActivity());
-
-		new AlertDialog.Builder(getSherlockActivity())
-				.setTitle("Export")
-				.setMessage("Input name for this recipe.")
-				.setView(n)
-				.setPositiveButton("Export",
-						new DialogInterface.OnClickListener() {
-							@Override
-							public void onClick(DialogInterface dialog,
-									int which) {
 								/*
 								 * Build Juicy-compatible JSON file and export
 								 * to configured save location.
@@ -419,11 +379,17 @@ public class RecipeFragment extends SherlockFragment {
 						}).show();
 	}
 
-	private void importRecipe() {
+	private void openRecipe() {
 		Intent i = new Intent(getSherlockActivity(), FileChooser.class);
 		ArrayList<String> extensions = new ArrayList<String>();
 		extensions.add(".json");
 		i.putStringArrayListExtra("filterFileExtension", extensions);
+
+		String startingDirectory = Environment.getExternalStorageDirectory()
+				.getAbsolutePath().toString()
+				+ "/Juicy/";
+		i.putExtra("startingDirectory", startingDirectory);
+
 		startActivityForResult(i, FILE_CHOOSER);
 	}
 

@@ -1,11 +1,14 @@
 package com.sli.juicymobile;
 
+import java.io.File;
+
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.MenuItem;
 
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -36,6 +39,14 @@ public class MainActivity extends SherlockFragmentActivity {
 		super.onCreate(savedInstanceState);
 		
 		setContentView(R.layout.drawer_main);
+		
+		// Create directory for storing recipes if needed
+		String outDir = Environment
+				.getExternalStorageDirectory()
+				.getAbsolutePath().toString()
+				+ "/Juicy/";
+		File outPath = new File(outDir);
+		outPath.mkdirs();
 
 		// Get the title
 		mTitle = mDrawerTitle = getTitle();
