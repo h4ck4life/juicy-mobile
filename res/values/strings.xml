@@ -64,7 +64,7 @@
     <string name="about_github_url">https://github.com/sli/juicy-mobile</string>
     <string name="about_rjuicyapp_url">http://www.reddit.com/r/juicyapp</string>
     <string name="about_abs_url">http://actionbarsherlock.com/</string>
-    <string name="about_file_chooser_url">https://code.google.com/p/android-file-chooser/</string>
+    <string name="about_file_chooser_url">https://github.com/sli/android-file-chooser/</string>
     
     <!-- Settings stuff -->
     <string name="settings_category_storage_title">Storage</string>
