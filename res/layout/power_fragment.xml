@@ -30,11 +30,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
                 android:layout_below="@+id/textView1"
+                android:layout_toLeftOf="@+id/bClearVoltage"
                 android:ems="10"
                 android:inputType="numberDecimal" >
             </EditText>
+
+            <Button
+                android:id="@+id/bClearVoltage"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/etVoltage"
+                android:layout_alignParentRight="true"
+                android:text="@string/clear" />
 
             <TextView
                 android:id="@+id/textView2"
@@ -50,10 +59,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
+                android:layout_alignRight="@+id/etResistance"
                 android:layout_below="@+id/textView2"
                 android:ems="10"
                 android:inputType="numberDecimal" />
+
+            <Button
+                android:id="@+id/bClearCurrent"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/etCurrent"
+                android:layout_alignParentRight="true"
+                android:text="@string/clear" />
 
             <TextView
                 android:id="@+id/textView3"
@@ -69,10 +87,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
                 android:layout_below="@+id/textView3"
+                android:layout_toLeftOf="@+id/bClearResistance"
                 android:ems="10"
                 android:inputType="numberDecimal" />
+
+            <Button
+                android:id="@+id/bClearResistance"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/etResistance"
+                android:layout_alignParentRight="true"
+                android:text="@string/clear" />
 
             <TextView
                 android:id="@+id/textView4"
@@ -88,10 +115,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
                 android:layout_below="@+id/textView4"
+                android:layout_toLeftOf="@+id/bClearPower"
                 android:ems="10"
                 android:inputType="numberDecimal" />
+
+            <Button
+                android:id="@+id/bClearPower"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/etPower"
+                android:layout_alignParentRight="true"
+                android:text="@string/clear" />
         </RelativeLayout>
     </ScrollView>
 
@@ -101,15 +137,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_toLeftOf="@+id/bClearPow"
-        android:text="@string/calculate" />
-
-    <Button
-        android:id="@+id/bClearPow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:text="@string/clear" />
+        android:text="@string/calculate" />
 
 </RelativeLayout>

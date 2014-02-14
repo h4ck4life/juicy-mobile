@@ -18,13 +18,14 @@ import android.widget.Toast;
 public class PowerFragment extends SherlockFragment {
 
 	private EditText etVoltage, etCurrent, etResistance, etPower;
-	private Button bCalculate, bClear;
+	private Button bCalculate, bClearVoltage, bClearCurrent, bClearResistance,
+			bClearPower;
 	private Context context;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		
+
 		View v = inflater.inflate(R.layout.power_fragment, container, false);
 
 		etVoltage = (EditText) v.findViewById(R.id.etVoltage);
@@ -32,7 +33,10 @@ public class PowerFragment extends SherlockFragment {
 		etResistance = (EditText) v.findViewById(R.id.etResistance);
 		etPower = (EditText) v.findViewById(R.id.etPower);
 		bCalculate = (Button) v.findViewById(R.id.bCalculate);
-		bClear = (Button) v.findViewById(R.id.bClearPow);
+		bClearVoltage = (Button) v.findViewById(R.id.bClearVoltage);
+		bClearCurrent = (Button) v.findViewById(R.id.bClearCurrent);
+		bClearResistance = (Button) v.findViewById(R.id.bClearResistance);
+		bClearPower = (Button) v.findViewById(R.id.bClearPower);
 
 		bCalculate.setOnClickListener(new OnClickListener() {
 
@@ -121,13 +125,37 @@ public class PowerFragment extends SherlockFragment {
 
 		});
 
-		bClear.setOnClickListener(new OnClickListener() {
+		bClearVoltage.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				etVoltage.setText("");
+			}
+
+		});
+
+		bClearCurrent.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
 				etCurrent.setText("");
+			}
+
+		});
+
+		bClearResistance.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
 				etResistance.setText("");
+			}
+
+		});
+
+		bClearPower.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
 				etPower.setText("");
 			}
 

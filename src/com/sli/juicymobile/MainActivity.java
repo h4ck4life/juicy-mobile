@@ -50,7 +50,7 @@ public class MainActivity extends SherlockFragmentActivity {
 
 		// Get the title
 		mTitle = mDrawerTitle = getTitle();
-
+		
 		// Generate title
 		title = new String[] { getString(R.string.drawer_title_recipe),
 				getString(R.string.drawer_title_resistance),

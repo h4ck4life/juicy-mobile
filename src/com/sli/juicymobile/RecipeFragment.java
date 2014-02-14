@@ -33,7 +33,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class RecipeFragment extends SherlockFragment {
-
+	
 	private static final int SHOW_PREFERENCES = 1;
 	private static final int FILE_CHOOSER = 2;
 
