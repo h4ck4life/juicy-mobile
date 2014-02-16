@@ -137,7 +137,15 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
+        android:layout_toLeftOf="@+id/bClearPowerAll"
         android:text="@string/calculate" />
+
+    <Button
+        android:id="@+id/bClearPowerAll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/bCalculate"
+        android:layout_alignParentRight="true"
+        android:text="@string/clear_all" />
 
 </RelativeLayout>

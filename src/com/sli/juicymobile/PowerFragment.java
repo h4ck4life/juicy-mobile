@@ -19,7 +19,7 @@ public class PowerFragment extends SherlockFragment {
 
 	private EditText etVoltage, etCurrent, etResistance, etPower;
 	private Button bCalculate, bClearVoltage, bClearCurrent, bClearResistance,
-			bClearPower;
+			bClearPower, bClearPowerAll;
 	private Context context;
 
 	@Override
@@ -37,6 +37,7 @@ public class PowerFragment extends SherlockFragment {
 		bClearCurrent = (Button) v.findViewById(R.id.bClearCurrent);
 		bClearResistance = (Button) v.findViewById(R.id.bClearResistance);
 		bClearPower = (Button) v.findViewById(R.id.bClearPower);
+		bClearPowerAll = (Button) v.findViewById(R.id.bClearPowerAll);
 
 		bCalculate.setOnClickListener(new OnClickListener() {
 
@@ -156,6 +157,18 @@ public class PowerFragment extends SherlockFragment {
 
 			@Override
 			public void onClick(View v) {
+				etPower.setText("");
+			}
+
+		});
+
+		bClearPowerAll.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				etVoltage.setText("");
+				etCurrent.setText("");
+				etResistance.setText("");
 				etPower.setText("");
 			}
 

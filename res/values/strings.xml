@@ -7,6 +7,7 @@
     <string name="title">Juicy</string>
     <string name="calculate">Calculate</string>
     <string name="clear">Clear</string>
+    <string name="clear_all">Clear All</string>
     <string name="save">Save</string>
     
     <!-- Recipe calcylator -->
