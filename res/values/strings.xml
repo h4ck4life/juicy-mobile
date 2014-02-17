@@ -3,7 +3,7 @@
 	
     <!-- Misc app strings -->
     <string name="app_name">Juicy</string>
-    <string name="app_version">0.1.1a</string>
+    <string name="app_version">0.1.2</string>
     <string name="title">Juicy</string>
     <string name="calculate">Calculate</string>
     <string name="clear">Clear</string>
