@@ -10,6 +10,7 @@ import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.ActionBarDrawerToggle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -37,20 +38,24 @@ public class MainActivity extends SherlockFragmentActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+
 		setContentView(R.layout.drawer_main);
-		
+
 		// Create directory for storing recipes if needed
-		String outDir = Environment
-				.getExternalStorageDirectory()
-				.getAbsolutePath().toString()
-				+ "/Juicy/";
-		File outPath = new File(outDir);
-		outPath.mkdirs();
+		/*File outPath = new File(Environment.getExternalStorageDirectory() + "/Juicy");
+		if (!outPath.exists()) {
+			if (outPath.mkdir()) {
+				Log.i("Juicy", "Recipe directory created.");
+			} else {
+				Log.e("Juicy", "Recipe directory failed to be created.");
+			}
+		} else {
+			Log.i("Juicy", "Recipe directory already exists.");
+		}*/
 
 		// Get the title
 		mTitle = mDrawerTitle = getTitle();
-		
+
 		// Generate title
 		title = new String[] { getString(R.string.drawer_title_recipe),
 				getString(R.string.drawer_title_resistance),
@@ -100,12 +105,10 @@ public class MainActivity extends SherlockFragmentActivity {
 				R.string.drawer_close) {
 
 			public void onDrawerClosed(View view) {
-				// TODO Auto-generated method stub
 				super.onDrawerClosed(view);
 			}
 
 			public void onDrawerOpened(View drawerView) {
-				// TODO Auto-generated method stub
 				// Set the title on the action when drawer open
 				getSupportActionBar().setTitle(mDrawerTitle);
 				super.onDrawerOpened(drawerView);

@@ -24,6 +24,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -335,12 +336,17 @@ public class RecipeFragment extends SherlockFragment {
 								String state = Environment
 										.getExternalStorageState();
 								if (Environment.MEDIA_MOUNTED.equals(state)) {
-									String outDir = Environment
-											.getExternalStorageDirectory()
-											.getAbsolutePath().toString()
-											+ "/Juicy/";
-									File outPath = new File(outDir);
-									outPath.mkdirs();
+									// Create directory for storing recipes if needed
+									File outPath = new File(Environment.getExternalStorageDirectory() + "/Juicy");
+									if (!outPath.exists()) {
+										if (outPath.mkdir()) {
+											Log.i("Juicy", "Recipe directory created.");
+										} else {
+											Log.e("Juicy", "Recipe directory failed to be created.");
+										}
+									} else {
+										Log.i("Juicy", "Recipe directory already exists.");
+									}
 									File outFile = new File(outPath, name
 											+ ".json");
 									try {
