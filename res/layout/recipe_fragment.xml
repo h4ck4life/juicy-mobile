@@ -11,7 +11,7 @@
         android:id="@+id/scrollView1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/bCalculate" >
+        android:layout_alignParentTop="true" >
 
         <RelativeLayout
             android:layout_width="match_parent"
