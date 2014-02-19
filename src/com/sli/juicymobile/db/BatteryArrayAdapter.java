@@ -70,6 +70,8 @@ public class BatteryArrayAdapter extends ArrayAdapter<Battery> {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		TextView label = new TextView(context);
+		label.setPadding(16, 16, 16, 16);
+		label.setTextSize(16);
 		label.setText(batteries[position].toString());
 		return label;
 	}
@@ -77,6 +79,8 @@ public class BatteryArrayAdapter extends ArrayAdapter<Battery> {
 	@Override
 	public View getDropDownView(int position, View convertView, ViewGroup parent) {
 		TextView label = new TextView(context);
+		label.setPadding(16, 16, 16, 16);
+		label.setTextSize(16);
 		label.setText(batteries[position].toString());
 		return label;
 	}
