@@ -1,16 +1,12 @@
 package com.sli.juicymobile;
 
-import java.io.File;
-
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.MenuItem;
 
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.v4.app.ActionBarDrawerToggle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -31,6 +27,7 @@ public class MainActivity extends SherlockFragmentActivity {
 	Fragment fragmentRecipe = new RecipeFragment();
 	Fragment fragmentResistance = new ResistanceFragment();
 	Fragment fragmentPower = new PowerFragment();
+	Fragment fragmentSettings = new SettingsFragment();
 	Fragment fragmentAbout = new AboutFragment();
 	private CharSequence mDrawerTitle;
 	private CharSequence mTitle;
@@ -42,16 +39,13 @@ public class MainActivity extends SherlockFragmentActivity {
 		setContentView(R.layout.drawer_main);
 
 		// Create directory for storing recipes if needed
-		/*File outPath = new File(Environment.getExternalStorageDirectory() + "/Juicy");
-		if (!outPath.exists()) {
-			if (outPath.mkdir()) {
-				Log.i("Juicy", "Recipe directory created.");
-			} else {
-				Log.e("Juicy", "Recipe directory failed to be created.");
-			}
-		} else {
-			Log.i("Juicy", "Recipe directory already exists.");
-		}*/
+		/*
+		 * File outPath = new File(Environment.getExternalStorageDirectory() +
+		 * "/Juicy"); if (!outPath.exists()) { if (outPath.mkdir()) {
+		 * Log.i("Juicy", "Recipe directory created."); } else { Log.e("Juicy",
+		 * "Recipe directory failed to be created."); } } else { Log.i("Juicy",
+		 * "Recipe directory already exists."); }
+		 */
 
 		// Get the title
 		mTitle = mDrawerTitle = getTitle();
@@ -60,18 +54,20 @@ public class MainActivity extends SherlockFragmentActivity {
 		title = new String[] { getString(R.string.drawer_title_recipe),
 				getString(R.string.drawer_title_resistance),
 				getString(R.string.drawer_title_power),
+				getString(R.string.drawer_title_settings),
 				getString(R.string.drawer_title_about) };
 
 		// Generate subtitle
 		subtitle = new String[] { getString(R.string.drawer_subtitle_recipe),
 				getString(R.string.drawer_subtitle_resistance),
 				getString(R.string.drawer_subtitle_power),
+				getString(R.string.drawer_subtitle_settings),
 				getString(R.string.drawer_subtitle_about) };
 
 		// Generate icon
 		icon = new int[] { R.drawable.drawer_recipe,
 				R.drawable.drawer_resistance, R.drawable.drawer_power,
-				R.drawable.drawer_about };
+				R.drawable.drawer_settings, R.drawable.drawer_about };
 
 		// Locate DrawerLayout in drawer_main.xml
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -163,6 +159,9 @@ public class MainActivity extends SherlockFragmentActivity {
 			ft.replace(R.id.content_frame, fragmentPower);
 			break;
 		case 3:
+			ft.replace(R.id.content_frame, fragmentSettings);
+			break;
+		case 4:
 			ft.replace(R.id.content_frame, fragmentAbout);
 			break;
 		}
@@ -195,4 +194,4 @@ public class MainActivity extends SherlockFragmentActivity {
 		getSupportActionBar().setTitle(mTitle);
 	}
 
-}
+};

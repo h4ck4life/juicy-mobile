@@ -1,8 +1,14 @@
-package com.sli.juicymobile;
+package com.sli.juicymobile.db;
 
-public class BatteryData {
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.TextView;
 
-	public static Battery[] Batteries = {
+public class BatteryArrayAdapter extends ArrayAdapter<Battery> {
+	
+	public static Battery[] batteries = {
 		// AW
 		new Battery("AW", "IMR", "", "18650", 2000, 1f,    0.5f),
 		new Battery("AW", "IMR", "", "18650", 1600, 24,    0.25f),
@@ -53,35 +59,26 @@ public class BatteryData {
 		new Battery("Sony", "IMR", "US18650VTC3", "18650", 1600, 30, 0.2f),
 		new Battery("Sony", "IMR", "US18650VTC4", "18650", 2100, 30, 0.2f),
 	};
+	
+	private Context context;
 
-	private static class Battery {
-
-		public String brand, type, model, size;
-		public int mAh;
-		public float amp_limit, safe;
-
-		public Battery(String brand, String type, String model, String size,
-				int mAh, float amp_limit, float safe) {
-			this.brand = brand;
-			this.type = type;
-			this.model = model;
-			this.size = size;
-			this.mAh = mAh;
-			this.amp_limit = amp_limit;
-			this.safe = safe;
-		}
-
-		public String toString() {
-			String s = this.brand;
-			if (this.model.equals("")) {
-				s = s + " " + this.size + " " + Integer.toString(this.mAh) + "mAh";
-			} else {
-				s = s + " " + this.model;
-			}
-
-			return s;
-		}
-
+	public BatteryArrayAdapter(Context context, int resource) {
+		super(context, android.R.layout.simple_spinner_dropdown_item, batteries);
+		this.context = context;
+	}
+	
+	@Override
+	public View getView(int position, View convertView, ViewGroup parent) {
+		TextView label = new TextView(context);
+		label.setText(batteries[position].toString());
+		return label;
+	}
+	
+	@Override
+	public View getDropDownView(int position, View convertView, ViewGroup parent) {
+		TextView label = new TextView(context);
+		label.setText(batteries[position].toString());
+		return label;
 	}
 
 }

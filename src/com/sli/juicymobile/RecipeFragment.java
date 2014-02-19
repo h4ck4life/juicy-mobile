@@ -35,8 +35,7 @@ import android.widget.Toast;
 
 public class RecipeFragment extends SherlockFragment {
 	
-	private static final int SHOW_PREFERENCES = 1;
-	private static final int FILE_CHOOSER = 2;
+	private static final int FILE_CHOOSER = 1;
 
 	private EditText etAmountToMake;
 	private EditText etFlavor1Name, etFlavor2Name, etFlavor3Name,
@@ -130,12 +129,6 @@ public class RecipeFragment extends SherlockFragment {
 			// import from json
 			openRecipe();
 			break;
-		// case R.id.menu_settings:
-		// open settings
-		// Intent i = new Intent(getSherlockActivity(),
-		// RecipeSettingsActivity.class);
-		// startActivityForResult(i, SHOW_PREFERENCES);
-		// break;
 		}
 
 		return super.onOptionsItemSelected(item);
