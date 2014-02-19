@@ -1,7 +1,11 @@
 package com.sli.juicymobile;
 
 import com.actionbarsherlock.app.SherlockFragment;
+import com.sli.juicymobile.db.Battery;
+import com.sli.juicymobile.db.BatteryArrayAdapter;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +14,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ResistanceFragment extends SherlockFragment {
 
@@ -17,13 +22,26 @@ public class ResistanceFragment extends SherlockFragment {
 			etResistance4;
 	private Button bCalculate, bClearRes;
 	private TextView tvOutput;
+	private Battery battery;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		
+
 		View v = inflater.inflate(R.layout.resistance_fragment, container,
 				false);
+
+		// Get battery preference
+		final SharedPreferences prefs = getSherlockActivity()
+				.getSharedPreferences("com.sli.juicymobile",
+						Context.MODE_PRIVATE);
+		int batteryPref = prefs.getInt("battery", -1);
+
+		if (batteryPref >= 0) {
+			battery = BatteryArrayAdapter.batteries[batteryPref];
+		} else {
+			battery = null;
+		}
 
 		etResistance1 = (EditText) v.findViewById(R.id.etResistance1);
 		etResistance2 = (EditText) v.findViewById(R.id.etResistance2);
@@ -68,6 +86,12 @@ public class ResistanceFragment extends SherlockFragment {
 				totalRes = 1 / coilTotal;
 				tvOutput.setText(Float.toString(totalRes)
 						+ getString(R.string.ohm_symbol));
+				
+				if (battery != null) {
+					if (totalRes < battery.safe) {
+						Toast.makeText(getSherlockActivity(), "WARNING: BELOW SAFE RESISTANCE LIMIT", Toast.LENGTH_LONG).show();
+					}
+				}
 			}
 
 		});

@@ -1,8 +1,11 @@
 package com.sli.juicymobile;
 
 import com.actionbarsherlock.app.SherlockFragment;
+import com.sli.juicymobile.db.Battery;
+import com.sli.juicymobile.db.BatteryArrayAdapter;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,20 +16,31 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-//import com.sli.juicymobile.data.BatteryData;
-
 public class PowerFragment extends SherlockFragment {
 
 	private EditText etVoltage, etCurrent, etResistance, etPower;
 	private Button bCalculate, bClearVoltage, bClearCurrent, bClearResistance,
 			bClearPower, bClearPowerAll;
 	private Context context;
+	private Battery battery;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
 		View v = inflater.inflate(R.layout.power_fragment, container, false);
+
+		// Get battery preference
+		final SharedPreferences prefs = getSherlockActivity()
+				.getSharedPreferences("com.sli.juicymobile",
+						Context.MODE_PRIVATE);
+		int batteryPref = prefs.getInt("battery", -1);
+		
+		if (batteryPref >= 0) {
+			battery = BatteryArrayAdapter.batteries[batteryPref];
+		} else {
+			battery = null;
+		}
 
 		etVoltage = (EditText) v.findViewById(R.id.etVoltage);
 		etCurrent = (EditText) v.findViewById(R.id.etCurrent);
@@ -115,6 +129,13 @@ public class PowerFragment extends SherlockFragment {
 					etCurrent.setText(Float.toString(current));
 					etResistance.setText(Float.toString(resistance));
 					etPower.setText(Float.toString(power));
+					
+					if (battery != null) {
+						if (current > battery.amp_limit) {
+							Toast.makeText(getSherlockActivity(), "WARNING: OVER AMP LIMIT", Toast.LENGTH_LONG).show();
+						}
+					}
+					
 				} else {
 					// Cannot continue!
 					Toast toast = Toast.makeText(getActivity(),
