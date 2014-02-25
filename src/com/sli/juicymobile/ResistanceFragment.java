@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -59,6 +60,13 @@ public class ResistanceFragment extends SherlockFragment {
 				float coil1 = 0f, coil2 = 0f, coil3 = 0f, coil4 = 0f, coilTotal = 0f, totalRes;
 				String coil;
 
+				// Close the keyboard
+				InputMethodManager inputManager = (InputMethodManager) getSherlockActivity()
+						.getSystemService(Context.INPUT_METHOD_SERVICE);
+				inputManager.hideSoftInputFromWindow(getSherlockActivity()
+						.getCurrentFocus().getWindowToken(),
+						InputMethodManager.HIDE_NOT_ALWAYS);
+
 				coil = etResistance1.getText().toString();
 				if (!coil.matches("")) {
 					coil1 = Float.parseFloat(coil);
@@ -86,10 +94,12 @@ public class ResistanceFragment extends SherlockFragment {
 				totalRes = 1 / coilTotal;
 				tvOutput.setText(Float.toString(totalRes)
 						+ getString(R.string.ohm_symbol));
-				
+
 				if (battery != null) {
 					if (totalRes < battery.safe) {
-						Toast.makeText(getSherlockActivity(), "WARNING: BELOW SAFE RESISTANCE LIMIT", Toast.LENGTH_LONG).show();
+						Toast.makeText(getSherlockActivity(),
+								"WARNING: BELOW SAFE RESISTANCE LIMIT",
+								Toast.LENGTH_LONG).show();
 					}
 				}
 			}

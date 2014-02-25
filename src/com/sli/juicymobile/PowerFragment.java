@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -35,7 +36,7 @@ public class PowerFragment extends SherlockFragment {
 				.getSharedPreferences("com.sli.juicymobile",
 						Context.MODE_PRIVATE);
 		int batteryPref = prefs.getInt("battery", -1);
-		
+
 		if (batteryPref >= 0) {
 			battery = BatteryArrayAdapter.batteries[batteryPref];
 		} else {
@@ -125,17 +126,26 @@ public class PowerFragment extends SherlockFragment {
 						toast.show();
 					}
 
+					// Close the keyboard
+					InputMethodManager inputManager = (InputMethodManager) getSherlockActivity()
+							.getSystemService(Context.INPUT_METHOD_SERVICE);
+					inputManager.hideSoftInputFromWindow(getSherlockActivity()
+							.getCurrentFocus().getWindowToken(),
+							InputMethodManager.HIDE_NOT_ALWAYS);
+
 					etVoltage.setText(Float.toString(volts));
 					etCurrent.setText(Float.toString(current));
 					etResistance.setText(Float.toString(resistance));
 					etPower.setText(Float.toString(power));
-					
+
 					if (battery != null) {
 						if (current > battery.amp_limit) {
-							Toast.makeText(getSherlockActivity(), "WARNING: OVER AMP LIMIT", Toast.LENGTH_LONG).show();
+							Toast.makeText(getSherlockActivity(),
+									"WARNING: OVER AMP LIMIT",
+									Toast.LENGTH_LONG).show();
 						}
 					}
-					
+
 				} else {
 					// Cannot continue!
 					Toast toast = Toast.makeText(getActivity(),

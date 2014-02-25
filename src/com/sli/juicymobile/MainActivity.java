@@ -40,15 +40,6 @@ public class MainActivity extends SherlockFragmentActivity {
 
 		setContentView(R.layout.drawer_main);
 
-		// Create directory for storing recipes if needed
-		/*
-		 * File outPath = new File(Environment.getExternalStorageDirectory() +
-		 * "/Juicy"); if (!outPath.exists()) { if (outPath.mkdir()) {
-		 * Log.i("Juicy", "Recipe directory created."); } else { Log.e("Juicy",
-		 * "Recipe directory failed to be created."); } } else { Log.i("Juicy",
-		 * "Recipe directory already exists."); }
-		 */
-
 		// Get the title
 		mTitle = mDrawerTitle = getTitle();
 

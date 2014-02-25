@@ -20,6 +20,7 @@ import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -28,13 +29,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 public class RecipeFragment extends SherlockFragment {
-	
+
 	private static final int FILE_CHOOSER = 1;
 
 	private EditText etAmountToMake;
@@ -185,6 +187,13 @@ public class RecipeFragment extends SherlockFragment {
 			finalAmt = amt
 					- (f1amt + f2amt + f3amt + f4amt + f5amt + f6amt + f7amt);
 
+			// Close the keyboard
+			InputMethodManager inputManager = (InputMethodManager) getSherlockActivity()
+					.getSystemService(Context.INPUT_METHOD_SERVICE);
+			inputManager.hideSoftInputFromWindow(getSherlockActivity()
+					.getCurrentFocus().getWindowToken(),
+					InputMethodManager.HIDE_NOT_ALWAYS);
+
 			display = "<html><body>";
 			display += "<style>body{color:white}table{border-collapse:collapse}td{text-align:center}</style>";
 			display += "<table border='1' width='100%'><tr><th>Ingredient</th><th>Amount</th></tr>";
@@ -329,16 +338,22 @@ public class RecipeFragment extends SherlockFragment {
 								String state = Environment
 										.getExternalStorageState();
 								if (Environment.MEDIA_MOUNTED.equals(state)) {
-									// Create directory for storing recipes if needed
-									File outPath = new File(Environment.getExternalStorageDirectory() + "/Juicy");
+									// Create directory for storing recipes if
+									// needed
+									File outPath = new File(Environment
+											.getExternalStorageDirectory()
+											+ "/Juicy");
 									if (!outPath.exists()) {
 										if (outPath.mkdir()) {
-											Log.i("Juicy", "Recipe directory created.");
+											Log.i("Juicy",
+													"Recipe directory created.");
 										} else {
-											Log.e("Juicy", "Recipe directory failed to be created.");
+											Log.e("Juicy",
+													"Recipe directory failed to be created.");
 										}
 									} else {
-										Log.i("Juicy", "Recipe directory already exists.");
+										Log.i("Juicy",
+												"Recipe directory already exists.");
 									}
 									File outFile = new File(outPath, name
 											+ ".json");
