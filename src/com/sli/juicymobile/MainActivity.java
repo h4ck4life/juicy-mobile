@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.support.v4.view.GravityCompat;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.support.v4.widget.DrawerLayout;
 
@@ -115,6 +117,14 @@ public class MainActivity extends SherlockFragmentActivity {
 
 		if (savedInstanceState == null) {
 			selectItem(0);
+		}
+
+		// Set page based on setting, if available
+		final SharedPreferences prefs = this.getSharedPreferences(
+				"com.sli.juicymobile", Context.MODE_PRIVATE);
+		int pagePref = prefs.getInt("startingPage", 0);
+		if (pagePref >= 0 && pagePref <= 3) {
+			selectItem(pagePref);
 		}
 
 	}

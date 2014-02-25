@@ -3,7 +3,7 @@
 	
     <!-- Misc app strings -->
     <string name="app_name">Juicy</string>
-    <string name="app_version">0.2</string>
+    <string name="app_version">0.2.1</string>
     <string name="title">Juicy</string>
     <string name="calculate">Calculate</string>
     <string name="clear">Clear</string>
@@ -39,6 +39,12 @@
     
     <!-- Settings -->
     <string name="battery">Battery</string>
+    <string name="starting_page">Starting Page</string>
+    <string-array name="pages">
+        <item>Recipe</item>
+        <item>Resistance</item>
+        <item>Power</item>
+    </string-array>
     
     <!-- Menu stuff -->
     <string name="menu_save">Save</string>
