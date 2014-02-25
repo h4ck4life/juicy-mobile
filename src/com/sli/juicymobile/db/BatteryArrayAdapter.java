@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 public class BatteryArrayAdapter extends ArrayAdapter<Battery> {
 	
+	// Make, Type, Model, Size, mAh, Amp Limit, Lowest Safe Resistance
 	public static Battery[] batteries = {
 		// AW
 		new Battery("AW", "IMR", "", "18650", 2000, 1f,    0.5f),

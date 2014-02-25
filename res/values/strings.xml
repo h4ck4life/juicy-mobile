@@ -64,20 +64,13 @@
     <!-- About stuff -->
     <string name="about_copyright">© 2014 sli</string>
     <string name="about_created_using">Created using:</string>
+    <string name="about_disclaimer_label">Disclaimer:</string>
+    <string name="about_disclaimer">By using this app, you agree that neither sli nor Juicy Mobile are responsible for any personal injury or damage to your device. Be safe, and do not build coils, especially sub ohm, unless you know what you\'re doing.</string>
     
     <!-- About URLs -->
     <string name="about_github_url">https://github.com/sli/juicy-mobile</string>
     <string name="about_rjuicyapp_url">http://www.reddit.com/r/juicyapp</string>
     <string name="about_abs_url">http://actionbarsherlock.com/</string>
     <string name="about_file_chooser_url">https://github.com/sli/android-file-chooser/</string>
-    
-    <!-- Settings stuff -->
-    <string name="settings_category_storage_title">Storage</string>
-    <string name="settings_save_location_title">Save Location</string>
-    <string name="settings_save_location_summary">Select recipe save location</string>
-    
-    <string name="settings_category_look_title">Look &amp; Feel</string>
-    <string name="settings_night_title">Night Mode</string>
-    <string name="settings_night_summary">For you night owls.</string>
 
 </resources>
