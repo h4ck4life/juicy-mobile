@@ -28,22 +28,20 @@ public class SettingsFragment extends SherlockFragment {
 		final SharedPreferences prefs = getSherlockActivity()
 				.getSharedPreferences("com.sli.juicymobile",
 						Context.MODE_PRIVATE);
-		int batteryPref = prefs.getInt("battery", -1);
+		final int batteryPref = prefs.getInt("battery", -1);
 
 		// Get starting page preference
-		int pagePref = prefs.getInt("startingPage", 0);
+		final int pagePref = prefs.getInt("startingPage", -1);
 
+		// Setup battery spinner and set selection if valid
 		BatteryArrayAdapter batteryAdapter = new BatteryArrayAdapter(
-				getSherlockActivity(),
-				R.layout.spinner_item);
+				getSherlockActivity(), R.layout.spinner_item);
 		spBattery = (Spinner) v.findViewById(R.id.spBattery);
 		spBattery.setAdapter(batteryAdapter);
 
-		if (batteryPref >= 0) {
-			spBattery.setSelection(batteryPref);
-		}
-
-		spBattery.setOnItemSelectedListener(new OnItemSelectedListener() {
+		// This insanity prevents the settings from being reset by what
+		// I consider to be some Android weirdness.
+		final OnItemSelectedListener spBatteryListener = new OnItemSelectedListener() {
 
 			@Override
 			public void onItemSelected(AdapterView<?> adapterView, View view,
@@ -57,20 +55,28 @@ public class SettingsFragment extends SherlockFragment {
 			public void onNothingSelected(AdapterView<?> adapterView) {
 			}
 
+		};
+
+		spBattery.post(new Runnable() {
+			public void run() {
+				spBattery.setOnItemSelectedListener(spBatteryListener);
+
+				if (batteryPref >= 0 && batteryPref < spBattery.getCount()) {
+					spBattery.setSelection(batteryPref);
+				}
+			}
 		});
 
+		// Setup starting page spinner and set selection if valid
 		spStartingPage = (Spinner) v.findViewById(R.id.spStartingPage);
 		ArrayAdapter<CharSequence> pageAdapter = ArrayAdapter
 				.createFromResource(getSherlockActivity(), R.array.pages,
 						R.layout.spinner_item);
 		spStartingPage.setAdapter(pageAdapter);
-		spStartingPage.setPadding(16, 16, 16, 16);
 
-		if (pagePref >= 0) {
-			spBattery.setSelection(pagePref);
-		}
-
-		spStartingPage.setOnItemSelectedListener(new OnItemSelectedListener() {
+		// This insanity prevents the settings from being reset by what
+		// I consider to be some Android weirdness.
+		final OnItemSelectedListener spPageListener = new OnItemSelectedListener() {
 
 			@Override
 			public void onItemSelected(AdapterView<?> adapterView, View view,
@@ -84,6 +90,16 @@ public class SettingsFragment extends SherlockFragment {
 			public void onNothingSelected(AdapterView<?> adapterView) {
 			}
 
+		};
+
+		spStartingPage.post(new Runnable() {
+			public void run() {
+				spStartingPage.setOnItemSelectedListener(spPageListener);
+
+				if (pagePref >= 0 && pagePref < spStartingPage.getCount()) {
+					spStartingPage.setSelection(pagePref);
+				}
+			}
 		});
 
 		return v;
