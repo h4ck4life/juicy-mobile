@@ -330,7 +330,7 @@ public class RecipeFragment extends SherlockFragment {
 								 * Build Juicy-compatible JSON file and export
 								 * to configured save location.
 								 */
-								String name = n.getText().toString();
+								String name = n.getText().toString().trim();
 
 								JSONObject recipe = getRecipeAsJSON();
 
