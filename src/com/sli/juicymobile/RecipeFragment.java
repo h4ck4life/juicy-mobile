@@ -388,7 +388,7 @@ public class RecipeFragment extends SherlockFragment {
 							@Override
 							public void onClick(DialogInterface dialog,
 									int which) {
-								// nothing, lol!
+								dialog.cancel();
 							}
 						}).show();
 	}
