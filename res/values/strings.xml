@@ -3,7 +3,7 @@
 	
     <!-- Misc app strings -->
     <string name="app_name">Juicy</string>
-    <string name="app_version">0.2.1</string>
+    <string name="app_version">0.2.2</string>
     <string name="title">Juicy</string>
     <string name="calculate">Calculate</string>
     <string name="clear">Clear</string>
@@ -70,6 +70,8 @@
     <!-- About stuff -->
     <string name="about_copyright">© 2014 sli</string>
     <string name="about_created_using">Created using:</string>
+    <string name="about_special_thanks_label">Special thanks to:</string>
+    <string name="about_special_thanks">Dan-O at DanoSongs.com for the demo video music.</string>
     <string name="about_disclaimer_label">Disclaimer:</string>
     <string name="about_disclaimer">By using this app, you agree that neither sli nor Juicy Mobile are responsible for any personal injury or damage to your device. Be safe, and do not build coils, especially sub ohm, unless you know what you\'re doing.</string>
     

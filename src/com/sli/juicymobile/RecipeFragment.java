@@ -52,7 +52,8 @@ public class RecipeFragment extends SherlockFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-		View v = inflater.inflate(R.layout.recipe_fragment, container, false);
+		final View v = inflater.inflate(R.layout.recipe_fragment, container,
+				false);
 
 		etAmountToMake = (EditText) v.findViewById(R.id.etAmountToMake);
 		etFlavor1Name = (EditText) v.findViewById(R.id.etFlavor1Name);
