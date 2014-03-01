@@ -1,4 +1,4 @@
-package com.sli.juicymobile.db;
+package com.sli.juicymobile.data;
 
 import com.sli.juicymobile.R;
 

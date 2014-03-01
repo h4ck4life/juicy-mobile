@@ -1,4 +1,4 @@
-package com.sli.juicymobile.db;
+package com.sli.juicymobile.data;
 
 public class Battery {
 

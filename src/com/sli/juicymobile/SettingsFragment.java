@@ -12,7 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.actionbarsherlock.app.SherlockFragment;
-import com.sli.juicymobile.db.BatteryArrayAdapter;
+import com.sli.juicymobile.data.BatteryArrayAdapter;
 
 public class SettingsFragment extends SherlockFragment {
 

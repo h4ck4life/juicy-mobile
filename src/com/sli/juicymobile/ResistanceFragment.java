@@ -1,8 +1,8 @@
 package com.sli.juicymobile;
 
 import com.actionbarsherlock.app.SherlockFragment;
-import com.sli.juicymobile.db.Battery;
-import com.sli.juicymobile.db.BatteryArrayAdapter;
+import com.sli.juicymobile.data.Battery;
+import com.sli.juicymobile.data.BatteryArrayAdapter;
 
 import android.content.Context;
 import android.content.SharedPreferences;

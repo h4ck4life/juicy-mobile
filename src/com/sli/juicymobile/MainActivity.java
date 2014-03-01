@@ -29,6 +29,7 @@ public class MainActivity extends SherlockFragmentActivity {
 	Fragment fragmentRecipe = new RecipeFragment();
 	Fragment fragmentResistance = new ResistanceFragment();
 	Fragment fragmentPower = new PowerFragment();
+	Fragment fragmentCoilBuilder = new CoilBuilderFragment();
 	Fragment fragmentSettings = new SettingsFragment();
 	Fragment fragmentAbout = new AboutFragment();
 	private CharSequence mDrawerTitle;
@@ -47,6 +48,7 @@ public class MainActivity extends SherlockFragmentActivity {
 		title = new String[] { getString(R.string.drawer_title_recipe),
 				getString(R.string.drawer_title_resistance),
 				getString(R.string.drawer_title_power),
+				getString(R.string.drawer_title_coil_builder),
 				getString(R.string.drawer_title_settings),
 				getString(R.string.drawer_title_about) };
 
@@ -54,13 +56,15 @@ public class MainActivity extends SherlockFragmentActivity {
 		subtitle = new String[] { getString(R.string.drawer_subtitle_recipe),
 				getString(R.string.drawer_subtitle_resistance),
 				getString(R.string.drawer_subtitle_power),
+				getString(R.string.drawer_subtitle_coil_builder),
 				getString(R.string.drawer_subtitle_settings),
 				getString(R.string.drawer_subtitle_about) };
 
 		// Generate icon
 		icon = new int[] { R.drawable.drawer_recipe,
 				R.drawable.drawer_resistance, R.drawable.drawer_power,
-				R.drawable.drawer_settings, R.drawable.drawer_about };
+				R.drawable.drawer_coil_builder, R.drawable.drawer_settings,
+				R.drawable.drawer_about };
 
 		// Locate DrawerLayout in drawer_main.xml
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -163,6 +167,9 @@ public class MainActivity extends SherlockFragmentActivity {
 			ft.replace(R.id.content_frame, fragmentSettings);
 			break;
 		case 4:
+			ft.replace(R.id.content_frame, fragmentCoilBuilder);
+			break;
+		case 5:
 			ft.replace(R.id.content_frame, fragmentAbout);
 			break;
 		}
