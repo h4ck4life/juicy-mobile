@@ -31,7 +31,7 @@ public class WireArrayAdapter extends ArrayAdapter<Wire> {
 	private Context context;
 
 	public WireArrayAdapter(Context context, int resource) {
-		super(context, resource);
+		super(context, resource, wires);
 		this.context = context;
 	}
 

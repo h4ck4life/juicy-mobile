@@ -164,10 +164,10 @@ public class MainActivity extends SherlockFragmentActivity {
 			ft.replace(R.id.content_frame, fragmentPower);
 			break;
 		case 3:
-			ft.replace(R.id.content_frame, fragmentSettings);
+			ft.replace(R.id.content_frame, fragmentCoilBuilder);
 			break;
 		case 4:
-			ft.replace(R.id.content_frame, fragmentCoilBuilder);
+			ft.replace(R.id.content_frame, fragmentSettings);
 			break;
 		case 5:
 			ft.replace(R.id.content_frame, fragmentAbout);

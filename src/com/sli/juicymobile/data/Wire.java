@@ -49,9 +49,9 @@ public class Wire {
 		String s = this.type + " ";
 
 		if (this.gauge == 0) {
-			s = s + Integer.toString(this.gauge) + "g";
+			s = s + Float.toString(this.size) + "mm";
 		} else {
-			s = s + Float.toString(this.size) + "Ω/ft";
+			s = s + Integer.toString(this.gauge) + "g";
 		}
 
 		return s;

@@ -68,10 +68,10 @@ public class CoilBuilderFragment extends SherlockFragment {
 
 		// Setup coil type spinner and set selection if valid
 		spCoilType = (Spinner) v.findViewById(R.id.spCoilType);
-		ArrayAdapter<CharSequence> pageAdapter = ArrayAdapter
+		ArrayAdapter<CharSequence> coilAdapter = ArrayAdapter
 				.createFromResource(getSherlockActivity(), R.array.coils,
 						R.layout.spinner_item);
-		spCoilType.setAdapter(pageAdapter);
+		spCoilType.setAdapter(coilAdapter);
 
 		// One more
 		final OnItemSelectedListener spPageListener = new OnItemSelectedListener() {

@@ -54,6 +54,7 @@
         <item>Recipe</item>
         <item>Resistance</item>
         <item>Power</item>
+        <item>Coil Builder</item>
     </string-array>
     
     <!-- Menu stuff -->
