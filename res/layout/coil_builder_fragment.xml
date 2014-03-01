@@ -37,4 +37,22 @@
         android:layout_alignLeft="@+id/textView1"
         android:layout_below="@+id/textView2" />
 
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/spCoilType"
+        android:layout_below="@+id/spCoilType"
+        android:text="@string/target_resistance" />
+
+    <EditText
+        android:id="@+id/etCoilResistance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textView3"
+        android:ems="10"
+        android:inputType="numberDecimal" />
+
 </RelativeLayout>

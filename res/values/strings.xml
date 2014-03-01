@@ -46,6 +46,7 @@
         <item>Triple</item>
         <item>Quad</item>
     </string-array>
+    <string name="target_resistance">Target Resistance</string>
     
     <!-- Settings -->
     <string name="battery">Battery</string>
