@@ -28,6 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView1"
         android:layout_below="@+id/spWireType"
+        android:layout_marginTop="8dp"
         android:text="@string/coil" />
 
     <Spinner
@@ -43,6 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/spCoilType"
         android:layout_below="@+id/spCoilType"
+        android:layout_marginTop="8dp"
         android:text="@string/target_resistance" />
 
     <EditText

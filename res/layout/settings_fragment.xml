@@ -33,6 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/textView1"
             android:layout_below="@+id/spBattery"
+            android:layout_marginTop="8dp"
             android:text="@string/starting_page" />
         
         <Spinner
