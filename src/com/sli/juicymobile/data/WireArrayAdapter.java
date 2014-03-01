@@ -13,6 +13,7 @@ public class WireArrayAdapter extends ArrayAdapter<Wire> {
 
 	public static Wire[] wires = {
 		// @formatter:off
+		// Round Kanthal
 		new Wire("A1 Kanthal", 20, 0.81f,    0.81f),
 		new Wire("A1 Kanthal", 22, 0.64f,    1.31f),
 		new Wire("A1 Kanthal", 24, 0.51f,    2.04f),
@@ -22,9 +23,15 @@ public class WireArrayAdapter extends ArrayAdapter<Wire> {
 		new Wire("A1 Kanthal", 32, 0.2032f,  13.1f),
 		new Wire("A1 Kanthal", 34, 0.16002f, 21.1f),
 		
+		// Ribbon Kanthal
 		new Wire("Ribbon Kanthal", 0, 0.8f, 5.76f),
 		new Wire("Ribbon Kanthal", 0, 0.5f, 8.52f),
 		new Wire("Ribbon Kanthal", 0, 0.4f, 11.4f),
+		
+		// Nickel
+		new Wire("Nickel", 28, 0f, 0.3778f),
+		new Wire("Nickel", 30, 0f, 0.6f),
+		new Wire("Nickel", 32, 0f, 0.9375f)
 		// @formatter:on
 	};
 

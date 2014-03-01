@@ -53,6 +53,8 @@ public class Wire {
 		} else {
 			s = s + Integer.toString(this.gauge) + "g";
 		}
+		
+		s = s + " (" + Float.toString(this.resistance) + "Ω/ft)";
 
 		return s;
 	}

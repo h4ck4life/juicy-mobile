@@ -80,7 +80,7 @@ public class CoilBuilderFragment extends SherlockFragment {
 			public void onItemSelected(AdapterView<?> adapterView, View view,
 					int position, long id) {
 				SharedPreferences.Editor editor = prefs.edit();
-				editor.putInt("startingPage", position);
+				editor.putInt("coil", position);
 				editor.commit();
 			}
 
