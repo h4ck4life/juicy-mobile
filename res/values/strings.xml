@@ -3,7 +3,7 @@
 	
     <!-- Misc app strings -->
     <string name="app_name">Juicy</string>
-    <string name="app_version">0.3</string>
+    <string name="app_version">0.3 Preview</string>
     <string name="title">Juicy</string>
     <string name="calculate">Calculate</string>
     <string name="clear">Clear</string>
@@ -23,6 +23,7 @@
     <string name="hint_flavor_name">Flavor Name</string>
     <string name="instructions">Input your recipe and tap "Calculate."</string>
     <string name="percent">%</string>
+    <string name="load_error">Error loading recipe.</string>
     
     <!-- Resistance calculator -->
     <string name="resistance1">Resistance 1</string>

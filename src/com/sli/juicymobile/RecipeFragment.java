@@ -89,22 +89,7 @@ public class RecipeFragment extends SherlockFragment {
 
 			@Override
 			public void onClick(View v) {
-				etAmountToMake.setText("");
-				etFlavor1Name.setText("");
-				etFlavor2Name.setText("");
-				etFlavor3Name.setText("");
-				etFlavor4Name.setText("");
-				etFlavor5Name.setText("");
-				etFlavor6Name.setText("");
-				etFlavor7Name.setText("");
-				etFlavor1Percent.setText("");
-				etFlavor2Percent.setText("");
-				etFlavor3Percent.setText("");
-				etFlavor4Percent.setText("");
-				etFlavor5Percent.setText("");
-				etFlavor6Percent.setText("");
-				etFlavor7Percent.setText("");
-				wvRecipe.loadData("", "text/plain", "utf-8");
+				clearRecipe();
 			}
 
 		});
@@ -407,6 +392,25 @@ public class RecipeFragment extends SherlockFragment {
 
 		startActivityForResult(i, FILE_CHOOSER);
 	}
+	
+	private void clearRecipe() {
+		etAmountToMake.setText("");
+		etFlavor1Name.setText("");
+		etFlavor2Name.setText("");
+		etFlavor3Name.setText("");
+		etFlavor4Name.setText("");
+		etFlavor5Name.setText("");
+		etFlavor6Name.setText("");
+		etFlavor7Name.setText("");
+		etFlavor1Percent.setText("");
+		etFlavor2Percent.setText("");
+		etFlavor3Percent.setText("");
+		etFlavor4Percent.setText("");
+		etFlavor5Percent.setText("");
+		etFlavor6Percent.setText("");
+		etFlavor7Percent.setText("");
+		wvRecipe.loadData("", "text/plain", "utf-8");
+	}
 
 	/*
 	 * Generate a JSONObject from the recipe form
@@ -534,7 +538,9 @@ public class RecipeFragment extends SherlockFragment {
 		try {
 			JSONObject json = new JSONObject(rawJSON);
 			JSONArray flavors = new JSONArray();
-
+			
+			clearRecipe();
+			
 			etAmountToMake.setText(json.getString("amount"));
 			flavors = json.getJSONArray("flavors");
 
@@ -589,6 +595,7 @@ public class RecipeFragment extends SherlockFragment {
 				etFlavor7Percent.setText(f.getString("percent"));
 			}
 		} catch (JSONException e) {
+			Toast.makeText(getSherlockActivity(), getString(R.string.load_error), Toast.LENGTH_SHORT).show();
 			e.printStackTrace();
 		}
 	}
