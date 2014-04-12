@@ -24,4 +24,4 @@ proguard/
 
 # Dev images
 *.psd
-/drop.svg
+*.svg

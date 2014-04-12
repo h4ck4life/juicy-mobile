@@ -21,12 +21,13 @@ public class BatteryArrayAdapter extends ArrayAdapter<Battery> {
 			new Battery("AW", "IMR", "", "18490", 1100, 16.5f, 0.3f),
 
 			// Efest
-			new Battery("Efest", "IMR", "", "18650", 1500, 15,   0.35f),
-			new Battery("Efest", "IMR", "", "18650", 2250, 10,   0.5f),
-			new Battery("Efest", "IMR", "", "18650", 1600, 30,   0.2f),
-			new Battery("Efest", "IMR", "", "18350", 800,  6.4f, 0.75f),
-			new Battery("Efest", "IMR", "", "18490", 1100, 8.8f, 0.55f),
-			new Battery("Efest", "IMR", "", "18500", 1100, 10,   0.5f),
+			new Battery("Efest", "IMR", "",     "18650", 1500, 15,   0.35f),
+			new Battery("Efest", "IMR", "",     "18650", 2250, 10,   0.5f),
+			new Battery("Efest", "IMR", "",     "18650", 1600, 30,   0.2f),
+			new Battery("Efest", "IMR", "P35A", "18650", 2500, 35,   0.2f),
+			new Battery("Efest", "IMR", "",     "18350", 800,  6.4f, 0.75f),
+			new Battery("Efest", "IMR", "",     "18490", 1100, 8.8f, 0.55f),
+			new Battery("Efest", "IMR", "",     "18500", 1100, 10,   0.5f),
 
 			// EH
 			new Battery("EH", "IMR", "", "18650", 2000, 16,   0.3f),
@@ -62,7 +63,8 @@ public class BatteryArrayAdapter extends ArrayAdapter<Battery> {
 			// Sony
 			new Battery("Sony", "IMR", "US18650V3",   "18650", 2250, 10, 0.5f),
 			new Battery("Sony", "IMR", "US18650VTC3", "18650", 1600, 30, 0.2f),
-			new Battery("Sony", "IMR", "US18650VTC4", "18650", 2100, 30, 0.2f)
+			new Battery("Sony", "IMR", "US18650VTC4", "18650", 2100, 30, 0.2f),
+			new Battery("Sony", "IMR", "US18650VTC5", "18650", 2500, 30, 0.2f)
 	};
 			// @formatter:on
 
